@@ -1,9 +1,8 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-卒業型ダイエットメンター
-世界で証明されたダイエット理論を、あなた専属のAIメンターが完全再現。
-"最後のダイエットパートナー"
+関口貴夫監修 関口式ダイエットメンター
+世界一の実績と、圧倒的な成功実例を持つ関口式ダイエットメンタープログラムを完全再現
 """
 
 import random
@@ -18,13 +17,429 @@ matplotlib.rcParams['font.family'] = 'DejaVu Sans'
 def print_header():
     """プログラム起動時のヘッダーを表示"""
     print("=" * 60)
-    print("🎓 卒業型ダイエットメンター 🎓")
+    print("💪 関口貴夫監修 関口式ダイエットメンター 💪")
     print("=" * 60)
-    print("世界で証明されたダイエット理論を、")
-    print("あなた専属のAIメンターが完全再現。")
-    print('"最後のダイエットパートナー"')
+    print("世界一の実績と、圧倒的な成功実例を持つ")
+    print("関口式ダイエットメンタープログラムを完全再現")
     print("=" * 60)
     print()
+    print("✨ 科学的根拠×指導歴30年の経験 ✨")
+    print()
+    print("ダイエットの現場では「理論はこうだけど、現実は違うよね」")
+    print("ということがたくさんあります。")
+    print("そんな現場のノウハウを全て詰め込みました。")
+    print()
+    print("-" * 60)
+    print("【関口貴夫 経歴】")
+    print("-" * 60)
+    print("• 指導歴30年")
+    print("• 健康体力づくり事業財団認定・健康運動指導士")
+    print("• IFBBアーノルドクラシック世界大会優勝")
+    print("• 文部科学大臣表彰")
+    print("• JBBFオールジャパン優勝×2回")
+    print("• ジャパンカップ優勝")
+    print("• JBBF関東オーバーオール優勝他多数")
+    print("-" * 60)
+    print()
+
+
+def get_meal_examples():
+    """
+    コンビニ飯と自炊のメニュー例を返す
+
+    Returns:
+        dict: カロリー帯別のメニュー例
+    """
+    return {
+        "convenience": [
+            {
+                "name": "サラダチキン＋おにぎり（梅）＋野菜サラダ",
+                "calories": 420,
+                "protein": 32,
+                "fat": 6,
+                "carbs": 58,
+                "description": "定番の高タンパク・低脂質メニュー"
+            },
+            {
+                "name": "ゆで卵×2＋焼き魚おにぎり＋野菜スティック",
+                "calories": 380,
+                "protein": 28,
+                "fat": 12,
+                "carbs": 42,
+                "description": "タンパク質豊富で腹持ちが良い"
+            },
+            {
+                "name": "プロテインバー＋バナナ＋ギリシャヨーグルト",
+                "calories": 350,
+                "protein": 25,
+                "fat": 8,
+                "carbs": 45,
+                "description": "間食や朝食におすすめ"
+            },
+            {
+                "name": "鯖の塩焼き＋もち麦おにぎり＋温野菜",
+                "calories": 480,
+                "protein": 35,
+                "fat": 15,
+                "carbs": 50,
+                "description": "オメガ3も摂れる栄養満点メニュー"
+            },
+            {
+                "name": "豆腐バー＋鮭おにぎり＋カットフルーツ",
+                "calories": 400,
+                "protein": 28,
+                "fat": 10,
+                "carbs": 52,
+                "description": "植物性・動物性タンパク質のバランス◎"
+            },
+            {
+                "name": "チキン＋ブロッコリー弁当＋プロテイン",
+                "calories": 550,
+                "protein": 48,
+                "fat": 12,
+                "carbs": 60,
+                "description": "筋トレ後に最適な高タンパクメニュー"
+            },
+            {
+                "name": "焼き鳥（塩）×5本＋おにぎり＋海藻サラダ",
+                "calories": 520,
+                "protein": 42,
+                "fat": 14,
+                "carbs": 55,
+                "description": "低脂質で満足感のあるメニュー"
+            },
+            {
+                "name": "ツナサラダ＋玄米おにぎり＋ゆで卵",
+                "calories": 450,
+                "protein": 35,
+                "fat": 10,
+                "carbs": 50,
+                "description": "オフィスランチに最適"
+            },
+            {
+                "name": "サバ缶＋もち麦ご飯＋キャベツの千切り",
+                "calories": 490,
+                "protein": 38,
+                "fat": 16,
+                "carbs": 48,
+                "description": "コスパ◎で栄養価も高い"
+            },
+            {
+                "name": "蒸し鶏＋五穀米おにぎり＋きのこスープ",
+                "calories": 410,
+                "protein": 32,
+                "fat": 8,
+                "carbs": 52,
+                "description": "低カロリーで栄養バランス◎"
+            }
+        ],
+        "homemade": [
+            {
+                "name": "鶏胸肉のグリル200g＋玄米150g＋ブロッコリー",
+                "calories": 520,
+                "protein": 48,
+                "fat": 10,
+                "carbs": 58,
+                "description": "ダイエットの王道メニュー"
+            },
+            {
+                "name": "鮭のムニエル＋さつまいも＋ほうれん草のお浸し",
+                "calories": 480,
+                "protein": 38,
+                "fat": 14,
+                "carbs": 52,
+                "description": "オメガ3と食物繊維が豊富"
+            },
+            {
+                "name": "豚ヒレ肉の生姜焼き＋雑穀米＋野菜たっぷり味噌汁",
+                "calories": 510,
+                "protein": 42,
+                "fat": 12,
+                "carbs": 55,
+                "description": "ビタミンB群が豊富で疲労回復に◎"
+            },
+            {
+                "name": "豆腐ハンバーグ＋玄米＋野菜サラダ",
+                "calories": 450,
+                "protein": 35,
+                "fat": 10,
+                "carbs": 50,
+                "description": "植物性タンパク質でヘルシー"
+            },
+            {
+                "name": "白身魚の蒸し物＋もち麦ご飯＋わかめスープ",
+                "calories": 420,
+                "protein": 40,
+                "fat": 6,
+                "carbs": 52,
+                "description": "超低脂質で消化にも優しい"
+            },
+            {
+                "name": "牛もも肉のステーキ150g＋玄米＋温野菜",
+                "calories": 540,
+                "protein": 45,
+                "fat": 15,
+                "carbs": 50,
+                "description": "鉄分・亜鉛も摂れる"
+            },
+            {
+                "name": "鶏むね肉の親子丼風＋もずく酢＋野菜スープ",
+                "calories": 490,
+                "protein": 42,
+                "fat": 10,
+                "carbs": 58,
+                "description": "卵でタンパク質をさらに強化"
+            },
+            {
+                "name": "サバの味噌煮＋五穀米＋小松菜のお浸し",
+                "calories": 500,
+                "protein": 38,
+                "fat": 16,
+                "carbs": 48,
+                "description": "DHA・EPAで脳にも良い"
+            },
+            {
+                "name": "鶏ささみの棒々鶏＋玄米＋キノコのスープ",
+                "calories": 440,
+                "protein": 45,
+                "fat": 8,
+                "carbs": 50,
+                "description": "超高タンパク・超低脂質"
+            },
+            {
+                "name": "イカと野菜の炒め物＋もち麦ご飯＋豆腐の味噌汁",
+                "calories": 460,
+                "protein": 35,
+                "fat": 10,
+                "carbs": 55,
+                "description": "低カロリーでボリューム満点"
+            }
+        ]
+    }
+
+
+def suggest_meal_examples(target_calories, target_protein, target_fat, target_carbs, name):
+    """
+    ユーザーの目標カロリー・PFCに合わせたメニュー例を提案
+
+    Args:
+        target_calories (float): 目標カロリー
+        target_protein (float): 目標タンパク質
+        target_fat (float): 目標脂質
+        target_carbs (float): 目標炭水化物
+        name (str): ユーザー名
+    """
+    meals = get_meal_examples()
+
+    # カロリー範囲（±100kcal）でフィルタリング
+    suitable_convenience = [
+        meal for meal in meals["convenience"]
+        if abs(meal["calories"] - target_calories) <= 150
+    ]
+    suitable_homemade = [
+        meal for meal in meals["homemade"]
+        if abs(meal["calories"] - target_calories) <= 150
+    ]
+
+    # フィルタリング結果が少ない場合は全て表示
+    if len(suitable_convenience) < 3:
+        suitable_convenience = meals["convenience"][:5]
+    if len(suitable_homemade) < 3:
+        suitable_homemade = meals["homemade"][:5]
+
+    print("\n" + "=" * 60)
+    print("🍱 関口からのメニュー提案")
+    print("=" * 60)
+    print(f"\n{name}さん、目標カロリー{target_calories:.0f}kcalに合わせた")
+    print("具体的なメニュー例をご紹介します！\n")
+    print("これらを参考に、無理なく続けていきましょう💪\n")
+
+    # コンビニ飯
+    print("【🏪 コンビニで揃えられるメニュー】")
+    print("-" * 60)
+    for i, meal in enumerate(suitable_convenience[:5], 1):
+        print(f"\n{i}. {meal['name']}")
+        print(f"   📊 {meal['calories']}kcal | P{meal['protein']}g F{meal['fat']}g C{meal['carbs']}g")
+        print(f"   💡 {meal['description']}")
+
+    print("\n")
+
+    # 自炊
+    print("【🍳 自炊で作れるメニュー】")
+    print("-" * 60)
+    for i, meal in enumerate(suitable_homemade[:5], 1):
+        print(f"\n{i}. {meal['name']}")
+        print(f"   📊 {meal['calories']}kcal | P{meal['protein']}g F{meal['fat']}g C{meal['carbs']}g")
+        print(f"   💡 {meal['description']}")
+
+    print("\n" + "=" * 60)
+    print("💡 ポイント")
+    print("=" * 60)
+    print(f"• 1日の目標: {target_calories:.0f}kcal")
+    print(f"• PFC目標: P{target_protein:.0f}g / F{target_fat:.0f}g / C{target_carbs:.0f}g")
+    print("• 3食に分けて、バランスよく食べましょう")
+    print("• 完璧を目指さなくて大丈夫！±10%の範囲ならOKです")
+    print("=" * 60)
+    print()
+
+
+def detect_dropout_risk(profile, weight_history, daily_records, day_count):
+    """
+    挫折リスクを検知する
+
+    Args:
+        profile (dict): プロフィール情報
+        weight_history (list): 体重履歴
+        daily_records (list): 日々の記録
+        day_count (int): 現在の日数
+
+    Returns:
+        dict: リスク情報 {
+            "risk_level": "low" | "medium" | "high",
+            "reasons": [理由のリスト],
+            "suggestions": [提案のリスト]
+        }
+    """
+    risk_level = "low"
+    reasons = []
+    suggestions = []
+
+    # 1. カロリー超過の連続を検知（直近3日）
+    if len(daily_records) >= 3:
+        recent_records = daily_records[-3:]
+        over_count = sum(1 for r in recent_records if r.get("calories", 0) > profile["target_calories"])
+
+        if over_count == 3:
+            risk_level = "high"
+            reasons.append("3日連続でカロリー超過が続いています")
+            suggestions.append("完璧を目指さなくて大丈夫！まずは目標の±10%以内を目指しましょう")
+            suggestions.append("今日は「体重を測る」「記録する」だけでもOKです")
+        elif over_count == 2:
+            risk_level = "medium"
+            reasons.append("カロリー超過が続いています")
+            suggestions.append("無理に減らさなくて大丈夫。まずは現状維持を目指しましょう")
+
+    # 2. 停滞期の長期化を検知（直近7日）
+    if len(weight_history) >= 8:  # 最低8日必要（初日含む）
+        recent_weights = weight_history[-8:]
+        initial = recent_weights[0]
+        final = recent_weights[-1]
+        weight_change = initial - final
+
+        # 7日間で0.3kg未満の変化 = 停滞期
+        if abs(weight_change) < 0.3:
+            if risk_level == "low":
+                risk_level = "medium"
+            reasons.append("体重が1週間以上停滞しています")
+            suggestions.append("停滞期は成長のサインです。焦らず継続しましょう")
+            suggestions.append("水分摂取、睡眠、ストレス管理を見直してみましょう")
+
+        # 7日間で増加傾向 = 要注意
+        elif weight_change < -0.5:
+            risk_level = "high"
+            reasons.append("体重が増加傾向にあります")
+            suggestions.append("一時的な増加は誰にでもあります。諦めないでください")
+            suggestions.append("基本に立ち返りましょう：カロリー・PFC・運動・睡眠")
+
+    # 3. PFCバランスの乱れを検知（直近3日）
+    if len(daily_records) >= 3:
+        recent_records = daily_records[-3:]
+        pfc_issues = 0
+
+        for record in recent_records:
+            protein = record.get("protein", 0)
+            if protein and protein < profile["target_protein"] * 0.7:  # タンパク質70%未満
+                pfc_issues += 1
+
+        if pfc_issues >= 2:
+            if risk_level == "low":
+                risk_level = "medium"
+            reasons.append("タンパク質の摂取量が不足しています")
+            suggestions.append("筋肉を維持するため、タンパク質をしっかり摂りましょう")
+            suggestions.append("プロテイン、サラダチキン、卵など手軽なものでOKです")
+
+    # 4. 記録の継続性チェック（day_countと記録数の比較）
+    if len(daily_records) < day_count - 1:  # 記録が抜けている
+        missing_days = day_count - 1 - len(daily_records)
+        if missing_days >= 2:
+            risk_level = "high"
+            reasons.append(f"記録が{missing_days}日分抜けています")
+            suggestions.append("完璧じゃなくて大丈夫！体重だけでも記録しましょう")
+            suggestions.append("継続することが一番大切です")
+
+    return {
+        "risk_level": risk_level,
+        "reasons": reasons,
+        "suggestions": suggestions
+    }
+
+
+def provide_special_support(risk_info, profile):
+    """
+    挫折リスクに応じた特別サポートを提供
+
+    Args:
+        risk_info (dict): リスク情報
+        profile (dict): プロフィール情報
+    """
+    if risk_info["risk_level"] == "low":
+        return  # リスク低い場合は何もしない
+
+    print("\n" + "⚠️" * 30)
+    print()
+
+    if risk_info["risk_level"] == "high":
+        print("【🚨 関口からの緊急メッセージ 🚨】")
+    else:
+        print("【💡 関口からのアドバイス 💡】")
+
+    print("=" * 60)
+    print(f"\n{profile['name']}さん、")
+    print()
+
+    # 理由を表示
+    for reason in risk_info["reasons"]:
+        print(f"  ❗ {reason}")
+
+    print()
+    print("でも、大丈夫です。")
+    print("こういう時期は誰にでもあります。")
+    print()
+    print("【🌟 今すぐできること】")
+    print("-" * 60)
+
+    # 提案を表示
+    for i, suggestion in enumerate(risk_info["suggestions"], 1):
+        print(f"\n{i}. {suggestion}")
+
+    print()
+    print("-" * 60)
+    print()
+
+    if risk_info["risk_level"] == "high":
+        print("💪 ハードルを下げましょう！")
+        print()
+        print("   ✅ 今日は「体重を測る」だけでOK")
+        print("   ✅ カロリー計算は明日から")
+        print("   ✅ とにかく「続ける」ことが最優先")
+        print()
+        print("   👉 続けることができれば、それだけで100点です！")
+    else:
+        print("💪 小さな一歩から始めましょう！")
+        print()
+        print("   できることから、一つずつ。")
+        print("   あなたなら大丈夫です。")
+
+    print()
+    print("=" * 60)
+    print("継続は力なり。")
+    print("一緒に乗り越えましょう！")
+    print("=" * 60)
+    print()
+    print("⚠️" * 30)
+    print()
+
+    input("💪 Enterキーを押して続ける...")
 
 
 def calculate_bmr(gender, weight, height, age):
@@ -438,173 +853,6 @@ def generate_stagnation_advice():
     return message
 
 
-def print_certificate(profile, weight_history):
-    """
-    卒業時の表彰状を表示
-
-    Args:
-        profile (dict): プロフィール情報
-        weight_history (list): 体重履歴のリスト
-    """
-    name = profile["name"]
-    initial_weight = profile["initial_weight"]
-    final_weight = weight_history[-1] if weight_history else initial_weight
-    target_weight = profile["target_weight"]
-    total_loss = initial_weight - final_weight
-    plan_name = profile["plan_name"]
-    duration = profile["duration_days"]
-
-    print("\n\n")
-    print("=" * 70)
-    print("=" * 70)
-    print("||" + " " * 66 + "||")
-    print("||" + " " * 20 + "🏆 表彰状 🏆" + " " * 22 + "||")
-    print("||" + " " * 66 + "||")
-    print("=" * 70)
-    print()
-    print(f"  {name}さん")
-    print()
-    print(f"  あなたは{plan_name}（{duration}日間）において、")
-    print(f"  揺るぎない決意と継続の力で、見事に")
-    print()
-    print(f"        {initial_weight}kg → {final_weight:.1f}kg")
-    print(f"        （-{total_loss:.1f}kg）")
-    print()
-    print(f"  という素晴らしい成果を達成されました。")
-    print()
-
-    # 達成度を計算
-    weight_goal = initial_weight - target_weight
-    achievement_rate = (total_loss / weight_goal * 100) if weight_goal > 0 else 0
-
-    if achievement_rate >= 100:
-        print(f"  目標達成率：{achievement_rate:.0f}%")
-        print(f"  🌟 目標完全達成！おめでとうございます！")
-    elif achievement_rate >= 80:
-        print(f"  目標達成率：{achievement_rate:.0f}%")
-        print(f"  🎉 素晴らしい成果です！")
-    elif achievement_rate >= 50:
-        print(f"  目標達成率：{achievement_rate:.0f}%")
-        print(f"  👏 よく頑張りました！")
-    else:
-        print(f"  目標達成率：{achievement_rate:.0f}%")
-        print(f"  💪 挑戦し続けたこと自体が素晴らしいです！")
-
-    print()
-    print(f"  この努力と成長を心から讃え、")
-    print(f"  ここに表彰いたします。")
-    print()
-    print(f"  {' ' * 40}ダイエットメンター")
-    print()
-    print("=" * 70)
-    print("=" * 70)
-    print("\n\n")
-
-
-def collect_graduation_feedback(profile, weight_history):
-    """
-    卒業時にユーザーからフィードバックを収集
-
-    Args:
-        profile (dict): プロフィール情報
-        weight_history (list): 体重履歴のリスト
-
-    Returns:
-        dict: フィードバック情報
-    """
-    print("\n" + "=" * 70)
-    print("【ダイエットメンターのご感想をお聞かせください】")
-    print("=" * 70)
-    print()
-    print(f"{profile['name']}さん、{profile['duration_days']}日間お疲れさまでした！")
-    print("最後に、あなたのご感想をお聞かせください。")
-    print("今後のサービス改善に活用させていただきます。")
-    print()
-
-    # 成果を入力
-    print("【成果】")
-    print("このプログラムで得られた成果を教えてください。")
-    print("（体重の変化、体調の変化、習慣の変化など）")
-    achievements = input("> ").strip()
-    print()
-
-    # よかった点を入力
-    print("【よかった点】")
-    print("このプログラムで特によかった点を教えてください。")
-    print("（機能、メッセージ、サポート内容など）")
-    good_points = input("> ").strip()
-    print()
-
-    # 全体的な感想を入力
-    print("【ご感想】")
-    print("全体的なご感想を自由にお書きください。")
-    overall_feedback = input("> ").strip()
-    print()
-
-    # フィードバックをまとめる
-    feedback = {
-        "name": profile["name"],
-        "plan": profile["plan_name"],
-        "duration_days": profile["duration_days"],
-        "initial_weight": profile["initial_weight"],
-        "final_weight": weight_history[-1] if weight_history else profile["initial_weight"],
-        "weight_loss": profile["initial_weight"] - (weight_history[-1] if weight_history else profile["initial_weight"]),
-        "achievements": achievements,
-        "good_points": good_points,
-        "overall_feedback": overall_feedback
-    }
-
-    # フィードバックをファイルに保存
-    import json
-    import datetime
-
-    timestamp = datetime.datetime.now().strftime('%Y%m%d_%H%M%S')
-
-    # JSON形式で保存
-    json_filename = f"feedback_{profile['name']}_{timestamp}.json"
-    try:
-        with open(json_filename, 'w', encoding='utf-8') as f:
-            json.dump(feedback, f, ensure_ascii=False, indent=2)
-        print(f"✅ ご感想を保存しました（JSON）: {json_filename}")
-    except Exception as e:
-        print(f"⚠️ JSON保存中にエラーが発生しましたが、続行します: {e}")
-
-    # 読みやすいテキスト形式でも保存
-    txt_filename = f"feedback_{profile['name']}_{timestamp}.txt"
-    try:
-        with open(txt_filename, 'w', encoding='utf-8') as f:
-            f.write("=" * 70 + "\n")
-            f.write("【卒業型ダイエットメンター】ご感想\n")
-            f.write("=" * 70 + "\n\n")
-            f.write(f"お名前: {feedback['name']}さん\n")
-            f.write(f"プラン: {feedback['plan']}\n")
-            f.write(f"期間: {feedback['duration_days']}日間\n")
-            f.write(f"開始時体重: {feedback['initial_weight']}kg\n")
-            f.write(f"最終体重: {feedback['final_weight']:.1f}kg\n")
-            f.write(f"体重変化: {feedback['weight_loss']:.1f}kg減\n")
-            f.write("\n" + "-" * 70 + "\n\n")
-            f.write("【成果】\n")
-            f.write(f"{feedback['achievements']}\n\n")
-            f.write("【よかった点】\n")
-            f.write(f"{feedback['good_points']}\n\n")
-            f.write("【ご感想】\n")
-            f.write(f"{feedback['overall_feedback']}\n\n")
-            f.write("-" * 70 + "\n")
-            f.write(f"記録日時: {datetime.datetime.now().strftime('%Y年%m月%d日 %H:%M:%S')}\n")
-            f.write("=" * 70 + "\n")
-        print(f"✅ ご感想を保存しました（テキスト）: {txt_filename}")
-    except Exception as e:
-        print(f"⚠️ テキスト保存中にエラーが発生しましたが、続行します: {e}")
-
-    print()
-    print("=" * 70)
-    print(f"{profile['name']}さん、貴重なご意見ありがとうございました！")
-    print("=" * 70)
-    print()
-
-    return feedback
-
-
 def generate_weekly_report(profile, weight_history, daily_records, week_number):
     """
     週刊レポート（メンターからの手紙）を生成
@@ -821,11 +1069,11 @@ def generate_monthly_report(profile, weight_history, daily_records, month_number
         report += f"この1ヶ月で{abs(month_weight_change):.1f}kg減少しました。\n"
         report += f"本当に素晴らしい成果です！\n\n"
 
-        if abs(change_percentage) >= 3 and abs(change_percentage) <= 5:
+        if abs(change_percentage) >= 2 and abs(change_percentage) <= 4:
             report += f"月に体重の{abs(change_percentage):.1f}%減、理想的なペースです。\n"
             report += f"この範囲であれば、リバウンドのリスクも低く、\n"
             report += f"健康的に減量できています。\n"
-        elif abs(change_percentage) < 3:
+        elif abs(change_percentage) < 2:
             report += f"ゆっくりとしたペースですが、それが一番確実です。\n"
             report += f"急激な減量よりも、着実な減量の方が\n"
             report += f"長期的には成功しやすいんですよ。\n"
@@ -1122,7 +1370,7 @@ def calculate_target_calories_and_pfc(profile):
     tdee = calculate_tdee(bmr, profile["activity_coefficient"])
 
     # ダイエットモードに応じたカロリー調整
-    # 月に体重の3%または5%を減らすための1日あたりのカロリー不足を計算
+    # 月に体重の2%（ライトモード）または4%（ハードモード）を減らすための1日あたりのカロリー不足を計算
     # 脂肪1kg = 約7200kcal
     weight_loss_per_month = profile["current_weight"] * profile["reduction_rate"]
     weight_loss_per_day = weight_loss_per_month / 30
@@ -1153,47 +1401,25 @@ def calculate_target_calories_and_pfc(profile):
 
 def select_plan():
     """
-    プランを選択する
+    プランを選択する（現在は990円プランのみ）
 
     Returns:
-        dict: プラン情報（期間（日数）、プラン名、料金）
+        dict: プラン情報（プラン名、料金）
     """
-    print("【プラン選択】")
+    print("【プラン料金】")
     print("=" * 60)
-    print("以下の3つのプランからお選びください：\n")
-    print("1. 5日間お試しプラン - 330円")
-    print("   （まずは試してみたい方におすすめ）")
-    print()
-    print("2. 3ヶ月プラン - 月額990円")
-    print("   （しっかり習慣化したい方におすすめ）")
-    print()
-    print("3. 6ヶ月プラン - 月額880円")
-    print("   （最もお得！じっくり取り組みたい方におすすめ）")
+    print("💰 990円プラン")
+    print("   - ライトモードまたはハードモードをお選びいただけます")
+    print("   - いつでも解約可能")
     print("=" * 60)
+    print()
 
-    while True:
-        choice = input("\nプランを選択してください（1, 2, 3）\n> ").strip()
+    input("Enterキーを押して続けてください...")
 
-        if choice == "1":
-            return {
-                "duration_days": 5,
-                "plan_name": "5日間お試しプラン",
-                "price": "330円"
-            }
-        elif choice == "2":
-            return {
-                "duration_days": 90,
-                "plan_name": "3ヶ月プラン",
-                "price": "月額990円"
-            }
-        elif choice == "3":
-            return {
-                "duration_days": 180,
-                "plan_name": "6ヶ月プラン",
-                "price": "月額880円"
-            }
-        else:
-            print("⚠️ 1, 2, 3 のいずれかを入力してください")
+    return {
+        "plan_name": "990円プラン",
+        "price": "990円"
+    }
 
 
 def get_profile():
@@ -1277,26 +1503,26 @@ def get_profile():
     # ダイエットモードの選択
     print("\n【ダイエットモード】どのペースで進めますか？")
     print("=" * 60)
-    print("1. ライトダイエット")
-    print("   - 月に体重の3%ペースで減量")
+    print("1. ライトモード")
+    print("   - 月に体重の2%ペースで減量")
     print("   - 無理なく続けたい方におすすめ")
     print("   - リバウンドしにくい健康的なペース")
     print()
-    print("2. ハードダイエット")
-    print("   - 月に体重の5%ペースで減量")
-    print("   - 短期間で結果を出したい方におすすめ")
-    print("   - より厳しい食事管理が必要")
+    print("2. ハードモード")
+    print("   - 月に体重の4%ペースで減量")
+    print("   - しっかり結果を出したい方におすすめ")
+    print("   - より計画的な食事管理が必要")
     print("=" * 60)
 
     while True:
         mode_choice = input("\nモードを選択してください（1 または 2）\n> ").strip()
         if mode_choice == "1":
-            diet_mode = "ライト"
-            reduction_rate = 0.03  # 3%
+            diet_mode = "ライトモード"
+            reduction_rate = 0.02  # 2%
             break
         elif mode_choice == "2":
-            diet_mode = "ハード"
-            reduction_rate = 0.05  # 5%
+            diet_mode = "ハードモード"
+            reduction_rate = 0.04  # 4%
             break
         else:
             print("⚠️ 1 または 2 を入力してください")
@@ -1326,6 +1552,23 @@ def get_profile():
                 print("⚠️ 正しい体重を入力してください")
         except ValueError:
             print("⚠️ 数字を入力してください")
+
+    # 関口からの提案
+    monthly_loss = current_weight * reduction_rate
+    print("\n" + "=" * 60)
+    print("【関口からの提案】")
+    print("=" * 60)
+    print(f"\n{name}さん、{diet_mode}を選択されましたね。")
+    print(f"現在の体重{current_weight}kgから、無理なく健康的に減量するなら...")
+    print()
+    print(f"💡 月に{monthly_loss:.1f}kgずつ")
+    print(f"   落としていくペースがおすすめです！")
+    print()
+    print(f"目標体重の{target_weight}kgまで、一緒に頑張りましょう！")
+    print("=" * 60)
+    print()
+
+    input("Enterキーを押して続けてください...")
 
     # プロフィール情報をまとめる
     profile = {
@@ -1369,9 +1612,8 @@ def show_profile_summary(profile):
     print(f"お名前: {profile['name']}さん")
     print(f"性別: {profile['gender']} / 年齢: {profile['age']}歳 / 身長: {profile['height']}cm")
     print(f"活動レベル: {profile['activity_name']}（係数{profile['activity_coefficient']}）")
-    print(f"ダイエットモード: {profile['diet_mode']}ダイエット（月{int(profile['reduction_rate']*100)}%ペース）")
+    print(f"ダイエットモード: {profile['diet_mode']}（月{int(profile['reduction_rate']*100)}%ペース）")
     print(f"プラン: {profile['plan_name']} ({profile['price']})")
-    print(f"期間: {profile['duration_days']}日間")
     print()
     print(f"現在の体重: {profile['current_weight']}kg")
     print(f"目標体重: {profile['target_weight']}kg")
@@ -1397,6 +1639,17 @@ def show_profile_summary(profile):
 
     print("=" * 60)
     print()
+
+    # メニュー提案を表示
+    suggest_meal_examples(
+        targets['target_calories'],
+        targets['protein'],
+        targets['fat'],
+        targets['carbs'],
+        profile['name']
+    )
+
+    input("📋 メニュー例を参考に、明日から頑張りましょう！Enterキーを押して続ける...")
 
 
 def get_daily_input(profile):
@@ -1767,8 +2020,8 @@ def main():
 
     # 開始メッセージ
     print(f"\n🎉 {profile['name']}さん、一緒に頑張りましょう！")
-    print(f"💪 {profile['diet_mode']}ダイエットで目標体重{profile['target_weight']}kgを目指しましょう！")
-    print(f"📅 {profile['duration_days']}日間、全力でサポートします！\n")
+    print(f"💪 {profile['diet_mode']}で目標体重{profile['target_weight']}kgを目指しましょう！")
+    print(f"📅 毎日、全力でサポートします！\n")
     print("それでは、毎日の報告を始めましょう。")
     print("（いつでも「exit」または「終了」と入力すると終了できます）\n")
 
@@ -1782,12 +2035,16 @@ def main():
 
     # 日々の報告ループ
     day_count = 1
-    max_days = profile["duration_days"]
 
-    while day_count <= max_days:
+    while True:
         print(f"\n{'='*60}")
-        print(f"📅 {day_count}日目 / {max_days}日")
+        print(f"📅 {day_count}日目")
         print(f"{'='*60}")
+
+        # 挫折リスクチェック（2日目以降）
+        if day_count >= 2:
+            risk_info = detect_dropout_risk(profile, weight_history, daily_records, day_count)
+            provide_special_support(risk_info, profile)
 
         # 今日の入力を受け取る
         daily_data = get_daily_input(profile)
@@ -1859,33 +2116,6 @@ def main():
                 print(f"📄 レポートを保存しました: {filepath}\n")
 
             input("✨ Enterキーを押して続ける...")
-
-        # プラン期間終了判定
-        if day_count >= max_days:
-            # 卒業セレモニー
-            print("\n\n")
-            print("🎊" * 35)
-            print()
-            print(" " * 15 + "🎓 卒業セレモニー 🎓")
-            print()
-            print("🎊" * 35)
-            print("\n\n")
-
-            # 表彰状を表示
-            print_certificate(profile, weight_history)
-
-            # 紆余曲折のドラマを振り返るメッセージ
-            graduation_msg = generate_graduation_message(profile, weight_history)
-            print(graduation_msg)
-
-            # ユーザーからのフィードバック収集
-            input("\n✨ Enterキーを押して、最後にご感想をお聞かせください...")
-            feedback = collect_graduation_feedback(profile, weight_history)
-
-            print("\n" + "🌟" * 35)
-            print(f"\n{profile['name']}さんの新しい人生の始まりを、心から応援しています！\n")
-            print("🌟" * 35 + "\n\n")
-            break
 
         # 日数をインクリメント
         day_count += 1
