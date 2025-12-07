@@ -1731,53 +1731,47 @@ if cal_input.lower() not in ["不明", "わからない", ""]:
         calories = float(cal_input)
     except ValueError:
         print("⚠️ 正しい数字を入力してください")
-        continue
-else:
+     else:
     calories = None
 
-            # PFCの入力
-            print("\n【PFC】タンパク質(P)、脂質(F)、炭水化物(C)を入力しますか？（y/n）")
+# PFCの入力
+print("\n [PFC] タンパク質(P)、脂質(F)、炭水化物(C)を入力しますか？ (y/n) ")
+pfc_choice = input("入力: ").strip().lower()
 
+if pfc_choice == "y":
+    # タンパク質
+    try:
+        protein = float(input("タンパク質(P)は何gですか？"))
+    except ValueError:
+        protein = None
 
-            if pfc_choice == "y":
-                # タンパク質
-                print("タンパク質(P)は何gですか？")
-                
-                except ValueError:
-                    protein = None
 
                 # 脂質
-                print("脂質(F)は何gですか？")
-                try:
-                except ValueError:
+    print("脂質(F)は何gですか？")
+    try:
+    except ValueError:
                     fat = None
 
-                # 炭水化物
-                print("炭水化物(C)は何gですか？")
-                try:
-                except ValueError:
-                    carbs = None
+               
 
-            break
-        else:
-            print("⚠️ 1 または 2 を入力してください")
+  
 
-    # 今日のデータをまとめる
-    daily_data = {
-        "weight": weight,
-        "exercise": exercise,
-        "meal": meal,
-        "calories": calories,
-        "protein": protein,
-        "fat": fat,
-        "carbs": carbs
-    }
 
     return daily_data
 
 
 def generate_feedback(profile, daily_data):
-    """
+    """# 今日のデータをまとめる
+daily_data = {
+    "calories": calories,
+    "protein": protein,
+    "fat": fat,
+    "weight": weight,
+    "carbs": None,   # 手入力パートはいったん無効化
+    "exercise": exercise,
+    "meal": meal,
+}
+
     関口さん風のフィードバックを生成する
 
     Args:
