@@ -1725,14 +1725,7 @@ def show_profile_summary(profile):
             print("\n【食事】今日食べたものをざっくり教えてください")
             print("（例: 鶏胸肉、ブロッコリー、白米 など）")
 
-         if cal_input.lower() not in ["不明", "わからない", ""]:
-    try:
-        calories = float(cal_input)
-    except ValueError:
-        print("⚠️ 正しい数字を入力してください")
-        continue
-else:
-    calories = None
+        
   
 
 
@@ -1740,10 +1733,35 @@ else:
 print("\n [PFC] タンパク質(P)、脂質(F)、炭水化物(C)を入力しますか？ (y/n) ")
 pfc_choice = input("入力: ").strip().lower()
 
+# カロリーの入力
+if cal_input.lower() not in ["不明", "わからない", ""]:
+    try:
+        calories = float(cal_input)
+    except ValueError:
+        print("⚠️ 正しい数字を入力してください")
+        continue
+else:
+    calories = None
+
+# PFCを入力する場合
+if pfc_choice == "y":
+    # タンパク質
+    try:
+        protein = float(input("タンパク質(P)は何gですか？: "))
+    except ValueError:
+        protein = None
+else:
+    protein = None
+
+
+# PFCを入力する場合
 if pfc_choice == "y":
     # タンパク質
     try:
         protein = float(input("タンパク質(P)は何gですか？"))
+    except ValueError:
+        protein = None
+n = float(input("タンパク質(P)は何gですか？"))
     except ValueError:
         protein = None
 
