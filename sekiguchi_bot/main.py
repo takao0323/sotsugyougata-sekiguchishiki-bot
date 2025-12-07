@@ -1747,12 +1747,14 @@ if pfc_choice == "y":
 
 
                 # 脂質
-    print("脂質(F)は何gですか？")
-    try:
-    except ValueError:
-                    fat = None
+   
 
-               
+               print("脂質(F)は何gですか？")
+try:
+    fat = float(input("脂質(F)は何gですか？"))
+except ValueError:
+    fat = None
+
 
   
 
