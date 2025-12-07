@@ -1725,14 +1725,16 @@ def show_profile_summary(profile):
             print("\n【食事】今日食べたものをざっくり教えてください")
             print("（例: 鶏胸肉、ブロッコリー、白米 など）")
 
-           
-if cal_input.lower() not in ["不明", "わからない", ""]:
+         if cal_input.lower() not in ["不明", "わからない", ""]:
     try:
         calories = float(cal_input)
     except ValueError:
         print("⚠️ 正しい数字を入力してください")
-     else:
+        continue
+else:
     calories = None
+  
+
 
 # PFCの入力
 print("\n [PFC] タンパク質(P)、脂質(F)、炭水化物(C)を入力しますか？ (y/n) ")
