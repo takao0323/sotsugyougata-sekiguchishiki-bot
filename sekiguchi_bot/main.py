@@ -1661,7 +1661,7 @@ def show_profile_summary(profile):
 
 
     # 体重を数値に変換
-        weight = profile.get("current_weight", profile.get("initial_weight", 0))
+    weight = profile.get("current_weight", profile.get("initial_weight", 0))
 
     # 運動の入力
     print("\n【運動】今日やった運動を教えてください")
