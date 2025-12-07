@@ -439,7 +439,6 @@ def provide_special_support(risk_info, profile):
     print("⚠️" * 30)
     print()
 
-    input("💪 Enterキーを押して続ける...")
 
 
 def calculate_bmr(gender, weight, height, age):
@@ -1414,7 +1413,6 @@ def select_plan():
     print("=" * 60)
     print()
 
-    input("Enterキーを押して続けてください...")
 
     return {
         "plan_name": "990円プラン",
@@ -1433,14 +1431,12 @@ def get_profile():
     print("まずは、あなたのことを教えてください！\n")
 
     # 名前の入力
-    name = input("【お名前】何とお呼びすればよいですか？\n> ").strip()
 
     print(f"\n{name}さん、よろしくお願いします！")
 
     # 性別の入力
     print("\n【性別】性別を教えてください")
     while True:
-        gender = input("1. 男性\n2. 女性\n> ").strip()
         if gender == "1":
             gender = "男性"
             break
@@ -1454,7 +1450,6 @@ def get_profile():
     print("\n【年齢】年齢を教えてください")
     while True:
         try:
-            age = int(input("> "))
             if age > 0 and age < 120:
                 break
             else:
@@ -1466,7 +1461,6 @@ def get_profile():
     print("\n【身長】身長は何cmですか？")
     while True:
         try:
-            height = float(input("> "))
             if height > 0 and height < 250:
                 break
             else:
@@ -1493,7 +1487,6 @@ def get_profile():
     }
 
     while True:
-        activity_choice = input("\n活動レベルを選択してください（1~5）\n> ").strip()
         if activity_choice in activity_levels:
             activity_name, activity_coefficient = activity_levels[activity_choice]
             break
@@ -1515,7 +1508,6 @@ def get_profile():
     print("=" * 60)
 
     while True:
-        mode_choice = input("\nモードを選択してください（1 または 2）\n> ").strip()
         if mode_choice == "1":
             diet_mode = "ライトモード"
             reduction_rate = 0.02  # 2%
@@ -1531,7 +1523,6 @@ def get_profile():
     print("\n【現在の体重】現在の体重は何kgですか？")
     while True:
         try:
-            current_weight = float(input("> "))
             if current_weight > 0:
                 break
             else:
@@ -1543,7 +1534,6 @@ def get_profile():
     print("\n【目標体重】目標体重は何kgですか？")
     while True:
         try:
-            target_weight = float(input("> "))
             if target_weight > 0 and target_weight < current_weight:
                 break
             elif target_weight >= current_weight:
@@ -1568,7 +1558,6 @@ def get_profile():
     print("=" * 60)
     print()
 
-    input("Enterキーを押して続けてください...")
 
     # プロフィール情報をまとめる
     profile = {
@@ -1649,10 +1638,8 @@ def show_profile_summary(profile):
         profile['name']
     )
 
-    input("📋 メニュー例を参考に、明日から頑張りましょう！Enterキーを押して続ける...")
 
 
-def get_daily_input(profile):
     """
     今日の報告を入力してもらう
 
@@ -1669,23 +1656,20 @@ def get_daily_input(profile):
     # 体重の入力（終了判定も含む）
     print("【体重】今日の体重は何kgですか？")
     print("（終了する場合は「exit」または「終了」と入力してください）")
-    weight_input = input("> ").strip()
 
     # 終了判定
-    if weight_input.lower() in ["exit", "終了", "quit", "q"]:
+    if weight_#input.lower() in ["exit", "終了", "quit", "q"]:
         return None
 
     # 体重を数値に変換
     try:
-        weight = float(weight_input)
+        weight = float(weight_#input)
     except ValueError:
         print("⚠️ 正しい数字を入力してください")
-        return get_daily_input(profile)  # 再入力
 
     # 運動の入力
     print("\n【運動】今日やった運動を教えてください")
     print("（例: 30分ジョギング、筋トレ、なし など）")
-    exercise = input("> ").strip()
 
     # 食事の入力方法を選択
     print("\n【食事】食事の入力方法を選択してください")
@@ -1699,7 +1683,6 @@ def get_daily_input(profile):
     carbs = None
 
     while True:
-        choice = input("> ").strip()
 
         if choice == "1":
             # 画像アップロード
@@ -1711,7 +1694,6 @@ def get_daily_input(profile):
                 if not api_key:
                     print("\n【初回設定】Google Gemini APIキーを入力してください")
                     print("（取得方法: https://makersuite.google.com/app/apikey）")
-                    api_key = input("> ").strip()
                     # 環境変数に設定（このセッションのみ有効）
                     os.environ["GEMINI_API_KEY"] = api_key
 
@@ -1733,12 +1715,10 @@ def get_daily_input(profile):
                     break
                 else:
                     print("⚠️ 解析に失敗しました。手動入力に切り替えますか？（y/n）")
-                    retry = input("> ").strip().lower()
                     if retry == "y":
                         choice = "2"
                         continue
                     else:
-                        return get_daily_input(profile)  # 再入力
             else:
                 # 画像パス取得をキャンセルした場合
                 print("手動入力に切り替えます")
@@ -1749,42 +1729,36 @@ def get_daily_input(profile):
             # 手動入力
             print("\n【食事】今日食べたものをざっくり教えてください")
             print("（例: 鶏胸肉、ブロッコリー、白米 など）")
-            meal = input("> ").strip()
 
             # カロリーの入力
             print("\n【カロリー】今日の総カロリーは何kcalですか？")
             print("（不明な場合は「不明」と入力してください）")
-            cal_input = input("> ").strip()
-            if cal_input.lower() not in ["不明", "わからない", ""]:
+            if cal_#input.lower() not in ["不明", "わからない", ""]:
                 try:
-                    calories = float(cal_input)
+                    calories = float(cal_#input)
                 except ValueError:
                     print("⚠️ 正しい数字を入力してください")
                     continue
 
             # PFCの入力
             print("\n【PFC】タンパク質(P)、脂質(F)、炭水化物(C)を入力しますか？（y/n）")
-            pfc_choice = input("> ").strip().lower()
 
             if pfc_choice == "y":
                 # タンパク質
                 print("タンパク質(P)は何gですか？")
                 try:
-                    protein = float(input("> ").strip())
                 except ValueError:
                     protein = None
 
                 # 脂質
                 print("脂質(F)は何gですか？")
                 try:
-                    fat = float(input("> ").strip())
                 except ValueError:
                     fat = None
 
                 # 炭水化物
                 print("炭水化物(C)は何gですか？")
                 try:
-                    carbs = float(input("> ").strip())
                 except ValueError:
                     carbs = None
 
@@ -2025,7 +1999,6 @@ def main():
     print("それでは、毎日の報告を始めましょう。")
     print("（いつでも「exit」または「終了」と入力すると終了できます）\n")
 
-    input("Enterキーを押して続ける...")
 
     # 体重履歴を記録するリスト
     weight_history = [profile["initial_weight"]]
@@ -2047,7 +2020,6 @@ def main():
             provide_special_support(risk_info, profile)
 
         # 今日の入力を受け取る
-        daily_data = get_daily_input(profile)
 
         # 終了判定（ユーザーが途中で終了を選択した場合）
         if daily_data is None:
@@ -2091,7 +2063,6 @@ def main():
             if filepath:
                 print(f"📄 レポートを保存しました: {filepath}\n")
 
-            input("✨ Enterキーを押して続ける...")
 
         # 月間レポート（30日目、60日目、90日目...）
         if day_count % 30 == 0:
@@ -2115,7 +2086,6 @@ def main():
             if filepath:
                 print(f"📄 レポートを保存しました: {filepath}\n")
 
-            input("✨ Enterキーを押して続ける...")
 
         # 日数をインクリメント
         day_count += 1
