@@ -1658,8 +1658,7 @@ def show_profile_summary(profile):
     print("（終了する場合は「exit」または「終了」と入力してください）")
 
     # 終了判定
-    if weight_#input.lower() in ["exit", "終了", "quit", "q"]:
-        return None
+
 
     # 体重を数値に変換
     try:
