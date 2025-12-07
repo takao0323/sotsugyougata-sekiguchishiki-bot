@@ -1758,12 +1758,10 @@ else:
 if pfc_choice == "y":
     # タンパク質
     try:
-        protein = float(input("タンパク質(P)は何gですか？"))
+        protein = float(input("タンパク質(P)は何gですか?"))
     except ValueError:
         protein = None
-n = float(input("タンパク質(P)は何gですか？"))
-    except ValueError:
-        protein = None
+
 
 
                 # 脂質
