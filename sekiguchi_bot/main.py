@@ -1714,7 +1714,6 @@ def show_profile_summary(profile):
                     if retry == "y":
                         choice = "2"
                         continue
-                    else:
             else:
                 # 画像パス取得をキャンセルした場合
                 print("手動入力に切り替えます")
