@@ -1661,10 +1661,8 @@ def show_profile_summary(profile):
 
 
     # 体重を数値に変換
-    try:
-        weight = float(weight_#input)
-    except ValueError:
-        print("⚠️ 正しい数字を入力してください")
+        weight = profile.get("current_weight", profile.get("initial_weight", 0))
+
 
     # 運動の入力
     print("\n【運動】今日やった運動を教えてください")
